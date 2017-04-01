@@ -1,0 +1,41 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: Service Provider
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/spring
+    username: root
+    password: 123456
+    druid:
+      #配置初始化大小,最小,最大
+      initial-size: 1
+      min-idle: 3
+      max-active: 20
+      #配置获取连接等待超时的时间
+      max-wait: 60000
+      #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      #配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      filters: stat
+
+      #IP白名单(多个IP间有逗号隔开)
+      allow: 127.0.0.1
+      #IP黑名单(IP即在白名单又在黑名单时,优先黑名单)
+      deny: 192.168.1.1
+      #druid管理页面登录用户名
+      loginUsername: admin
+      #druid管理页面密码
+      loginPassword: 123456
+      #是否允许重置数据
+      resetEnable: false
+    type: com.alibaba.druid.pool.DruidDataSource
+logging:
+  file: ./logs/provider.log
+  level: error

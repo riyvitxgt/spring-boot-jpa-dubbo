@@ -1,0 +1,13 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: Service Provider
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/spring
+    username: root
+    password: 123456
+logging:
+  file: ./logs/provider.log
+  level: error
